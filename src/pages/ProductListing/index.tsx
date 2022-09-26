@@ -1,10 +1,10 @@
 import Navbar from "../../components/navbar/navbar"
 import ProductCard from "../../components/productCard"
 
-const ProductListing = () => {
+const Index = () => {
     return (
         <div>
-            <Navbar />
+            <Navbar showCategories />
             <div style={{ marginTop: 20, marginLeft: 20 }}>
                 <ProductCard />
             </div>
@@ -12,4 +12,4 @@ const ProductListing = () => {
     )
 }
 
-export default ProductListing
+export default Index
