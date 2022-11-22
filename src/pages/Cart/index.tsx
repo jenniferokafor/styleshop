@@ -1,5 +1,5 @@
-import Navbar from "../../components/navbar/navbar"
-import Paragraph from "../../components/paragraph"
+import Navbar from "../../components/Navbar/navbar"
+import Paragraph from "../../components/Paragraph"
 import EmptyCartAnimation from "../../components/EmptyCart"
 
 const Cart = () => {

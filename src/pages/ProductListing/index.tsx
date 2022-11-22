@@ -1,15 +1,44 @@
-import Navbar from "../../components/navbar/navbar"
-import ProductCard from "../../components/productCard"
+import { useState, useEffect } from "react"
+import Navbar from "../../components/Navbar/navbar"
+import ProductCard from "../../components/ProductCard"
+import "./productlisting.scss"
+import { useQuery } from "react-query"
+import { fetchProductsApi } from "../../api"
 
-const Index = () => {
+const ProductListing = () => {
+    const [products, setProducts] = useState([])
+
+    const { refetch: productsRefetch, isLoading: productsLoading } = useQuery(
+        ["fetch-products"],
+        () => fetchProductsApi(),
+        {
+            onSuccess: (data) => {
+                console.log(data?.data)
+                setProducts(data?.data)
+            },
+        }
+    )
+
+    useEffect(() => {
+        productsRefetch()
+    }, [])
+
     return (
         <div>
             <Navbar showCategories />
-            <div style={{ marginTop: 20, marginLeft: 20 }}>
-                <ProductCard />
-            </div>
+            {productsLoading ? (
+                <div>Loading</div>
+            ) : (
+                <div className="ProductListingWrapper">
+                    <div className="ProductListingCardWrapper">
+                        {products?.map((product, i) => (
+                            <ProductCard data={product} key={i} />
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
 
-export default Index
+export default ProductListing

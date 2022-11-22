@@ -1,0 +1,10 @@
+.ProductListingWrapper {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.ProductListingCardWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}

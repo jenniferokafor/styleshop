@@ -1,9 +1,14 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import "./productcard.scss"
 import { LocalMallOutlined, LocalMall } from "@mui/icons-material"
-import Paragraph from "../paragraph"
+import Paragraph from "../Paragraph"
+import { Product } from "./model"
 
-const ProductCard = () => {
+interface Props {
+    data: Product
+}
+
+const ProductCard: React.FC<Props> = ({ data }) => {
     const [quickAdd, setQuickAdd] = useState(false)
 
     const quickAddIcon = quickAdd ? <LocalMall /> : <LocalMallOutlined />
@@ -15,19 +20,14 @@ const ProductCard = () => {
     return (
         <div className="productCard">
             <div className="productCardImage">
-                <img
-                    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                    alt="product image"
-                />
+                <img src={data?.image} alt="product image" />
             </div>
 
             <div className="productCardIcon" onClick={handleQuickAdd}>
                 {quickAddIcon}
             </div>
 
-            <Paragraph marginTop="1rem">
-                Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
-            </Paragraph>
+            <Paragraph marginTop="1rem">{data?.title}</Paragraph>
             <Paragraph
                 color="#666666"
                 fontWeight={500}
@@ -35,7 +35,7 @@ const ProductCard = () => {
                 marginTop="1.5rem"
                 textAlign="right"
             >
-                $ 109.95
+                $ {data?.price}
             </Paragraph>
         </div>
     )

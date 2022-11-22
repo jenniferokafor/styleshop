@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "../logo/logo"
+import Logo from "../Logo/logo"
 import "./navbar.scss"
 import { Button, Menu, MenuItem } from "@mui/material"
 import {
